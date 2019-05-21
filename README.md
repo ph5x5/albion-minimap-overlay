@@ -39,7 +39,7 @@ For example the ORE_HIGH_NODE pointed will display the T6 ore points on a T5 map
 ## Contact information:
 E-mail: [phoenixus87@gmail.com](mailto:phoenixus87@gmail.com)<br />
 Skype: fenyanyaa<br />
-Donates are appreciated, Patreon link will be placed soon
+Donates are appreciated: https://www.patreon.com/ph5x5
 
 ## Thanks to:
 1. [Albion Online Team](https://albiononline.com)

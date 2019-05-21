@@ -245,6 +245,7 @@ def main():
     logging.info("Albion minimap extension")
     logging.info("Doesn't interfers with the game and doesn't violate the user agreement")
     logging.info("By ph5x5 (phoenixus87@gmail.com)")
+    logging.info("Donations: https://www.patreon.com/ph5x5")
     logging.info("Version: {}".format(VERSION))
 
     RESOLUTION = GetResolution().resolution
