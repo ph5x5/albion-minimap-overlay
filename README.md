@@ -11,7 +11,7 @@ Doesn't interfers with the game and doesn't violate the user agreement since it 
 6. Renders the nodes over the Albion minimap region
 
 ## First launch:
-1. Download and unpack the [latest release]
+1. Download and unpack the [latest release](https://github.com/ph5x5/albion-minimap-overlay/releases)
 2. Download the latest [Google Tesseract OCR Engine](https://github.com/tesseract-ocr/tesseract/wiki/Downloads)
 3. Go the executable folder and edit the config.json file updating the Tesseract "tesseract_path" installation location
 4. Fill the filters you want to view in the "filters" section according to [Configuration Nodes] section
