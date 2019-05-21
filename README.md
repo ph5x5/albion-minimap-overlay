@@ -2,6 +2,9 @@
 This tool automatically gathers the information about your current map at https://www.albiononline2d.com and displays the pointed nodes over your minimap.<br />
 Doesn't interfers with the game and doesn't violate the user agreement since it only displays the on-screen overlay over the albion window and gets the current map name making screenshots.
 
+## **Download**:
+[Releases link](https://github.com/ph5x5/albion-minimap-overlay/releases)
+
 ## How it works:
 1. Makes screenshot of the Albion map name region
 2. Recognizes the name of the current map via the Google Tesseract OCR engine (needs to be installed)
