@@ -13,7 +13,7 @@ Doesn't interfers with the game and doesn't violate the user agreement since it 
 5. Filters the information based on the ./config file
 6. Renders the nodes over the Albion minimap region
 
-## First launch:
+## Installation:
 1. Download and unpack the [latest release](https://github.com/ph5x5/albion-minimap-overlay/releases)
 2. Download the latest [Google Tesseract OCR Engine](https://github.com/tesseract-ocr/tesseract/wiki/Downloads)
 3. Go the executable folder and edit the config.json file updating the Tesseract "tesseract_path" installation location
@@ -34,9 +34,14 @@ Resource filters are pointed as this: <RESOURCE>_<TIER>_NODE, where
 - <RESOURCE> - is the resource name (FIBER, HIDE, ORE, ROCK WOOD)
 - <TIER> - is the relative resource on the map (HIGH, MEDIUM, LOW)
 For example the ORE_HIGH_NODE pointed will display the T6 ore points on a T5 map.
+RANDOM_DUNGEONS filter allows displaying of random dungeons
+
+## Changelog:
+- v0.1  Initial Release
+- v0.2  Fixed map name recognition and added random dungeon markers
 
 ## Planned features:
-1. Tray icon and menu
+1. Tray icon and menu with GUI configuration
 2. Random dungeons and fishing
 
 ## Contact information:

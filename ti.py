@@ -23,7 +23,7 @@ pytesseract.pytesseract.tesseract_cmd = configuration['general']['tesseract_path
 MAP_PREVIOUS = ""
 MAP_INFO_PREVIOUS = {}
 RESOLUTION = "", ""
-VERSION = "0.1beta"
+VERSION = "0.2"
 
 logging.basicConfig(level = logging.INFO)
 
@@ -59,7 +59,7 @@ class GetScreenshot:
     def __init__(self, width, height):
         logging.info("Saving map name screenshot to {}..".format(SCREENSHOT_FILE))
         try:
-            screenshot = ImageGrab.grab(bbox = (width - 265, height - 44, width - 80, height - 20))
+            screenshot = ImageGrab.grab(bbox = (width - 255, height - 44, width - 80, height - 20))
             screenshot.save(SCREENSHOT_FILE)
         except:
             CriticalError("Can\'t capture screenshot to file {}!".format(SCREENSHOT_FILE))
@@ -69,7 +69,7 @@ class RecognizeMap:
     def __init__(self):
         logging.info("Recognizing the captured screenshot..")
         try:            
-            temp_text = pytesseract.image_to_string(Image.open(SCREENSHOT_FILE))
+            temp_text = pytesseract.image_to_string(Image.open(SCREENSHOT_FILE), lang = 'eng', config = '--psm 10 --oem 3 -c tessedit_char_whitelist=abcdefghijklmnopqrstuvwxyz -c tessedit_char_blacklist=0123456789')
             if '<' in temp_text:
                 temp_text = temp_text.split('<')[0]
             if temp_text.endswith(' '):
@@ -156,6 +156,9 @@ class FilterMapInfo:
             for resource in map_info["resourceNodes"]:
                 if resource["name"] in filters:
                     self.filtered_info.append(resource)
+            if "RANDOM_DUNGEONS" in filters:
+                for random_dungeon in map_info["randomDungeonNodes"]:
+                    self.filtered_info.append(random_dungeon)
         except:
             logging.error("Can't apply the filters, please check their syntax in {}".format(CONFIGURATION_FILE))
         
@@ -185,15 +188,19 @@ class InitOverlay():
         self.canvas.delete("all")
         logging.info("Updating the nodes on minimap..")
         for resource in map_info_filtered:
-            if resource["nodetype"] == "high":
-                color = "red"
-                radius = 2
-            elif resource["nodetype"] == "medium":
-                color = "orange"
-                radius = 1
-            elif resource["nodetype"] == "low":
-                color = "yellow"
-                radius = 1
+            if resource["name"] != "RandomExitPositionMarker_10x10_EXIT_RND-DNG":
+                if resource["nodetype"] == "high":
+                    color = "red"
+                    radius = 2
+                elif resource["nodetype"] == "medium":
+                    color = "orange"
+                    radius = 1
+                elif resource["nodetype"] == "low":
+                    color = "yellow"
+                    radius = 1
+            else:
+                color = "deep sky blue"
+                radius = 4
             self.create_circle(RESOLUTION[0] - 340 + (resource["x"] + 1000) * 0.175, RESOLUTION[1] - 240 + (-resource["y"] + 1000) * 0.108, radius, color, self.canvas)
         logging.info("Sleeping for {} seconds..".format(UPDATE_INTERVAL))
         self.canvas.after(5000, self.redraw_canvas)
@@ -237,17 +244,21 @@ class GetData():
         return self.map_info_filtered
 
 
+class Information():
+    def __init__(self):
+        logging.info("Albion minimap extension")
+        logging.info("Doesn't interfers with the game and doesn't violate the user agreement")
+        logging.info("By ph5x5 (phoenixus87@gmail.com)")
+        logging.info("Donations: https://www.patreon.com/ph5x5")
+        logging.info("Version: {}".format(VERSION))
+        logging.info("----------------------------------------------------")
+
 
 # MAIN
 def main():
     global RESOLUTION
 
-    logging.info("Albion minimap extension")
-    logging.info("Doesn't interfers with the game and doesn't violate the user agreement")
-    logging.info("By ph5x5 (phoenixus87@gmail.com)")
-    logging.info("Donations: https://www.patreon.com/ph5x5")
-    logging.info("Version: {}".format(VERSION))
-
+    Information()
     RESOLUTION = GetResolution().resolution
     InitOverlay()
 
