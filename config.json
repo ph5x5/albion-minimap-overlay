@@ -1,0 +1,13 @@
+{
+    "general": {
+        "screenshot_file": "./screenshot.png",
+        "tesseract_path": "C:/Program Files/Tesseract-OCR/tesseract",
+        "update_interval": 5,
+        "retries": 5
+    },
+    "filters": [
+        "ORE_HIGH_NODE",
+        "ORE_MEDIUM_NODE",
+        "ORE_LOW_NODE"
+    ]
+}
