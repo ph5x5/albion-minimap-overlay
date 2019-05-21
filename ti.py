@@ -1,9 +1,10 @@
 # IMPORTS
 from screeninfo import get_monitors
-import pyscreenshot, pytesseract
+import pytesseract
 import time
 import tkinter
 from PIL import Image
+from PIL import ImageGrab
 import requests
 import json
 import win32api, win32con, pywintypes
@@ -58,7 +59,7 @@ class GetScreenshot:
     def __init__(self, width, height):
         logging.info("Saving map name screenshot to {}..".format(SCREENSHOT_FILE))
         try:
-            screenshot = pyscreenshot.grab(bbox = (width - 265, height - 44, width - 80, height - 20))
+            screenshot = ImageGrab.grab(bbox = (width - 265, height - 44, width - 80, height - 20))
             screenshot.save(SCREENSHOT_FILE)
         except:
             CriticalError("Can\'t capture screenshot to file {}!".format(SCREENSHOT_FILE))
