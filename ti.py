@@ -12,7 +12,7 @@ import logging
 
 
 # CONFIGURATION
-CONFIGURATION_FILE = './config.json'
+CONFIGURATION_FILE = '.\config.json'
 with open(CONFIGURATION_FILE) as json_file:  
     configuration = json.load(json_file)
 SCREENSHOT_FILE = configuration['general']['screenshot_file']

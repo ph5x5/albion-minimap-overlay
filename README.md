@@ -32,7 +32,9 @@ Resource filters are pointed as this: <RESOURCE>_<TIER>_NODE, where
 - <TIER> - is the relative resource on the map (HIGH, MEDIUM, LOW)
 For example the ORE_HIGH_NODE pointed will display the T6 ore points on a T5 map.
 
-
+## Planned features:
+1. Tray icon and menu
+2. Random dungeons and fishing
 
 ## Contact information:
 E-mail: [phoenixus87@gmail.com](mailto:phoenixus87@gmail.com)<br />
@@ -43,4 +45,5 @@ Donates are appreciated, Patreon link will be placed soon
 1. [Albion Online Team](https://albiononline.com)
 2. [albion.thisgame.ru](https://albion.thisgame.ru/)
 3. [www.albiononline2d.com](https://www.albiononline2d.com)
-4. Google
+4. [Pelfusion](http://www.pelfusion.com/) for icon
+5. Google
