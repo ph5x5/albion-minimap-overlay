@@ -24,6 +24,7 @@ MAP_PREVIOUS = ""
 MAP_INFO_PREVIOUS = {}
 RESOLUTION = "", ""
 VERSION = "0.2"
+DATABASE_URI = 'https://www.albiononline2d.com/en/map'
 
 logging.basicConfig(level = logging.INFO)
 
@@ -69,12 +70,12 @@ class RecognizeMap:
     def __init__(self):
         logging.info("Recognizing the captured screenshot..")
         try:            
-            temp_text = pytesseract.image_to_string(Image.open(SCREENSHOT_FILE), lang = 'eng', config = '--psm 10 --oem 3 -c tessedit_char_whitelist=abcdefghijklmnopqrstuvwxyz -c tessedit_char_blacklist=0123456789')
+            temp_text = pytesseract.image_to_string(Image.open(SCREENSHOT_FILE), lang = 'eng', config = '--psm 7 --oem 3 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPRSTUVWXYZabcdefghijklmnopqrstuvwxyz -c tessedit_char_blacklist=0123456789')
             if '<' in temp_text:
                 temp_text = temp_text.split('<')[0]
             if temp_text.endswith(' '):
                 temp_text = temp_text[:-1]
-            self.text = temp_text.replace(' ', '-')
+            self.text = temp_text.replace(' ', '-').replace('-a>', '').replace('-e>', '').replace('->', '')
         except:
             CriticalError('Can\'t recognize the map name. Set the game to windowed FullScreen!')
         
@@ -89,14 +90,16 @@ class GetMapId:
         self.map_id = ""
         self.flag = False
         error_counter = 0
-        logging.info("Getting map id from \"albion.thisgame.ru\"..")
+        logging.info("Getting map id from \"albiononline2d.com\"..")
         while self.map_id == "":
             if error_counter < RETRIES:
                 try:
-                    r = requests.get('https://albion.thisgame.ru/en/map/' + name)
+                    r = requests.get(DATABASE_URI)
                     name = name.replace('-', ' ')
-                    map_json = json.loads(str(r.content).split("\"{}\":".format(name))[1].split('},')[0] + "}")
-                    self.map_id = map_json["id"].split('_')[0]
+                    map_json = json.loads(r.text.split('var config = ')[1].split(';</script>')[0])
+                    for node in map_json["nodes"]:
+                        if node["_attr"]["displayname"] == name:
+                            self.map_id = node["_attr"]["id"]
                     self.flag = True
                     break
                 except:
@@ -124,7 +127,7 @@ class GetMapInfo:
         while 'self.data_json' not in locals():
             if error_counter < RETRIES:
                 try:
-                    r = requests.get('https://www.albiononline2d.com/en/map/api/nodes/' + map_id)
+                    r = requests.get(DATABASE_URI + '/api/nodes/' + map_id)
                     self.data_json = json.loads(r.content)
                     self.flag = True
                     break

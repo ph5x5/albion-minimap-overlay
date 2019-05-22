@@ -8,10 +8,9 @@ Doesn't interfers with the game and doesn't violate the user agreement since it 
 ## How it works:
 1. Makes screenshot of the Albion map name region
 2. Recognizes the name of the current map via the Google Tesseract OCR engine (needs to be installed)
-3. Gets the map id at [albion.thisgame.ru](https://albion.thisgame.ru/)
-4. Gets the map information at [www.albiononline2d.com](https://www.albiononline2d.com)
-5. Filters the information based on the ./config file
-6. Renders the nodes over the Albion minimap region
+3. Gets the map information at [www.albiononline2d.com](https://www.albiononline2d.com)
+4. Filters the information based on the ./config file
+5. Renders the nodes over the Albion minimap region
 
 ## Installation:
 1. Download and unpack the [latest release](https://github.com/ph5x5/albion-minimap-overlay/releases)
@@ -37,8 +36,9 @@ For example the ORE_HIGH_NODE pointed will display the T6 ore points on a T5 map
 RANDOM_DUNGEONS filter allows displaying of random dungeons
 
 ## Changelog:
-- v0.1  Initial Release
+- v0.3  Improved map name recognition removed dependency from albion.thisgame.ru
 - v0.2  Fixed map name recognition and added random dungeon markers
+- v0.1  Initial Release
 
 ## Planned features:
 1. Tray icon and menu with GUI configuration
@@ -51,7 +51,6 @@ Donates are appreciated: https://www.patreon.com/ph5x5
 
 ## Thanks to:
 1. [Albion Online Team](https://albiononline.com)
-2. [albion.thisgame.ru](https://albion.thisgame.ru/)
-3. [www.albiononline2d.com](https://www.albiononline2d.com)
-4. [Pelfusion](http://www.pelfusion.com/) for icon
-5. Google
+2. [www.albiononline2d.com](https://www.albiononline2d.com)
+3. [Pelfusion](http://www.pelfusion.com/) for icon
+4. Google
