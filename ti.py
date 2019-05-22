@@ -75,7 +75,7 @@ class RecognizeMap:
                 temp_text = temp_text.split('<')[0]
             if temp_text.endswith(' '):
                 temp_text = temp_text[:-1]
-            self.text = temp_text.replace(' ', '-').replace('-a>', '').replace('-e>', '').replace('->', '')
+            self.text = temp_text.replace(' ', '-').replace('-a', '').replace('-e', '').replace('->', '').replace('-@', '').replace('-«a', '').replace('>', '').replace('.', '')
         except:
             CriticalError('Can\'t recognize the map name. Set the game to windowed FullScreen!')
         
