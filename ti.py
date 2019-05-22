@@ -69,7 +69,7 @@ class GetScreenshot:
 class RecognizeMap:
     def __init__(self):
         logging.info("Recognizing the captured screenshot..")
-        try:            
+        try:
             temp_text = pytesseract.image_to_string(Image.open(SCREENSHOT_FILE), lang = 'eng', config = '--psm 7 --oem 3 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPRSTUVWXYZabcdefghijklmnopqrstuvwxyz -c tessedit_char_blacklist=0123456789')
             if '<' in temp_text:
                 temp_text = temp_text.split('<')[0]
@@ -101,10 +101,17 @@ class GetMapId:
                         if node["_attr"]["displayname"] == name:
                             self.map_id = node["_attr"]["id"]
                     self.flag = True
-                    break
+                    if self.map_id != "":
+                        break
                 except:
                     logging.warning("Can't get id, retrying..")
+                finally:
                     error_counter += 1
+                    if error_counter > (RETRIES - 2):
+                        if name.endswith("a"):
+                            logging.info("Trying to remove the recognition artifact \"a\"..")
+                            name = name[:-1]
+                            logging.info("New name: {}".format(name))
             else:
                 self.flag = False
                 break
@@ -228,6 +235,7 @@ class GetData():
         map_name = RecognizeMap().name
         if map_name != MAP_PREVIOUS:
             map_id = GetMapId(map_name).mapid
+            logging.info(map_id)
             if map_id != "False":
                 map_info = GetMapInfo(map_id).data
                 if map_info != "False":
