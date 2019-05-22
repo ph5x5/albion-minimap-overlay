@@ -5,6 +5,9 @@ Doesn't interfers with the game and doesn't violate the user agreement since it 
 ## **Download**:
 [Releases link](https://github.com/ph5x5/albion-minimap-overlay/releases)
 
+## Screenshot:
+![Screenshot](https://raw.githubusercontent.com/ph5x5/albion-minimap-overlay/master/misc/image.png)
+
 ## How it works:
 1. Makes screenshot of the Albion map name region
 2. Recognizes the name of the current map via the Google Tesseract OCR engine (needs to be installed)
