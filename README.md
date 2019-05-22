@@ -8,7 +8,7 @@ Doesn't interfers with the game and doesn't violate the user agreement since it 
 ## Screenshot:
 ![Screenshot](https://raw.githubusercontent.com/ph5x5/albion-minimap-overlay/master/misc/image.png)
 
-## How it works:
+## How does it work:
 1. Makes screenshot of the Albion map name region
 2. Recognizes the name of the current map via the Google Tesseract OCR engine (needs to be installed)
 3. Gets the map information at [www.albiononline2d.com](https://www.albiononline2d.com)
@@ -39,9 +39,10 @@ For example the ORE_HIGH_NODE pointed will display the T6 ore points on a T5 map
 RANDOM_DUNGEONS filter allows displaying of random dungeons
 
 ## Changelog:
-- v0.3  Improved map name recognition removed dependency from albion.thisgame.ru
-- v0.2  Fixed map name recognition and added random dungeon markers
-- v0.1  Initial Release
+- v0.3.1    Improved map name recognition
+- v0.3      Improved map name recognition removed dependency from albion.thisgame.ru
+- v0.2      Fixed map name recognition and added random dungeon markers
+- v0.1      Initial Release
 
 ## Planned features:
 1. Tray icon and menu with GUI configuration
