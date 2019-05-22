@@ -23,7 +23,7 @@ pytesseract.pytesseract.tesseract_cmd = configuration['general']['tesseract_path
 MAP_PREVIOUS = ""
 MAP_INFO_PREVIOUS = {}
 RESOLUTION = "", ""
-VERSION = "0.2"
+VERSION = "0.3.1"
 DATABASE_URI = 'https://www.albiononline2d.com/en/map'
 
 logging.basicConfig(level = logging.INFO)
