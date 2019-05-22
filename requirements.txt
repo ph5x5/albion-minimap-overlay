@@ -1,0 +1,11 @@
+screeninfo
+pytesseract
+time
+tkinter
+PIL
+requests
+json
+win32api
+win32con
+pywintypes
+logging
