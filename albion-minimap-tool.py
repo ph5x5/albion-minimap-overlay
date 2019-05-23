@@ -73,9 +73,9 @@ class RecognizeMap:
             temp_text = pytesseract.image_to_string(Image.open(SCREENSHOT_FILE), lang = 'eng', config = '--psm 7 --oem 3 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPRSTUVWXYZabcdefghijklmnopqrstuvwxyz -c tessedit_char_blacklist=0123456789')
             if '<' in temp_text:
                 temp_text = temp_text.split('<')[0]
-            if temp_text.endswith(' '):
+            while temp_text.endswith(' ') or temp_text.endswith('-'):
                 temp_text = temp_text[:-1]
-            self.text = temp_text.replace(' ', '-').replace('-a', '').replace('-e', '').replace('->', '').replace('-@', '').replace('-«a', '').replace('>', '').replace('.', '')
+            self.text = temp_text.replace(' ', '-').replace('-a', '').replace('-e', '').replace('->', '').replace('-@', '').replace('-«a', '').replace('-«@', '').replace('>', '').replace('.', '')
         except:
             CriticalError('Can\'t recognize the map name. Set the game to windowed FullScreen!')
         
@@ -169,6 +169,9 @@ class FilterMapInfo:
             if "RANDOM_DUNGEONS" in filters:
                 for random_dungeon in map_info["randomDungeonNodes"]:
                     self.filtered_info.append(random_dungeon)
+            if "FISHING_NODE" in filters:
+                for fishing_node in map_info["fishingNodes"]:
+                    self.filtered_info.append(fishing_node)
         except:
             logging.error("Can't apply the filters, please check their syntax in {}".format(CONFIGURATION_FILE))
         
@@ -198,19 +201,26 @@ class InitOverlay():
         self.canvas.delete("all")
         logging.info("Updating the nodes on minimap..")
         for resource in map_info_filtered:
-            if resource["name"] != "RandomExitPositionMarker_10x10_EXIT_RND-DNG":
-                if resource["nodetype"] == "high":
-                    color = "red"
-                    radius = 2
-                elif resource["nodetype"] == "medium":
-                    color = "orange"
-                    radius = 1
-                elif resource["nodetype"] == "low":
-                    color = "yellow"
-                    radius = 1
-            else:
+            if resource["name"] == "RandomExitPositionMarker_10x10_EXIT_RND-DNG":
                 color = "deep sky blue"
                 radius = 4
+            elif "FishingZone" in resource["name"]:
+                color = "SlateBlue1"
+                radius = 2
+            else:
+                if resource["resourcetype"] == "mobcamp":
+                    color = "DarkOrange3"
+                    radius = 3
+                else:
+                    if resource["nodetype"] == "high":
+                        color = "red"
+                        radius = 2
+                    elif resource["nodetype"] == "medium":
+                        color = "orange"
+                        radius = 1
+                    elif resource["nodetype"] == "low":
+                        color = "yellow"
+                        radius = 1
             self.create_circle(RESOLUTION[0] - 340 + (resource["x"] + 1000) * 0.175, RESOLUTION[1] - 240 + (-resource["y"] + 1000) * 0.108, radius, color, self.canvas)
         logging.info("Sleeping for {} seconds..".format(UPDATE_INTERVAL))
         self.canvas.after(5000, self.redraw_canvas)

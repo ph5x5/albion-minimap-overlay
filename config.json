@@ -9,6 +9,8 @@
         "ORE_HIGH_NODE",
         "ORE_MEDIUM_NODE",
         "ORE_LOW_NODE",
-        "RANDOM_DUNGEONS"
+        "RANDOM_DUNGEONS",
+        "MOBCAMP_MEDIUM_NODE",
+        "FISHING_NODE"
     ]
 }
