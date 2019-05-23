@@ -49,7 +49,8 @@ MOBCAMP_MEDIUM_NODE displays mob camps.
 - v0.1      Initial Release
 
 ## Planned features:
-1. Tray icon and menu with GUI configuration
+1. Local caching to lower load on albion2d
+2. Tray icon and menu with GUI configuration
 
 ## Contact information:
 E-mail: [phoenixus87@gmail.com](mailto:phoenixus87@gmail.com)<br />
