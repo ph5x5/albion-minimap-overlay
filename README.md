@@ -12,7 +12,7 @@ Doesn't interfers with the game and doesn't violate the user agreement since it 
 1. Makes screenshot of the Albion map name region
 2. Recognizes the name of the current map via the Google Tesseract OCR engine (needs to be installed)
 3. Gets the map information at [www.albiononline2d.com](https://www.albiononline2d.com)
-4. Filters the information based on the ./config file
+4. Filters the information based on the ./config.json file
 5. Renders the nodes over the Albion minimap region
 
 ## Installation:
