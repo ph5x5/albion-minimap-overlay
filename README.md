@@ -35,8 +35,10 @@ Filters sections:
 Resource filters are pointed as this: {RESOURCE}_{TIER}_NODE, where
 - <RESOURCE> - is the resource name (FIBER, HIDE, ORE, ROCK WOOD)
 - <TIER> - is the relative resource on the map (HIGH, MEDIUM, LOW)
-For example the ORE_HIGH_NODE pointed will display the T6 ore points on a T5 map.
-RANDOM_DUNGEONS filter allows displaying of random dungeons
+For example the ORE_HIGH_NODE pointed will display the T6 ore points on a T5 map.<br />
+RANDOM_DUNGEONS filter allows displaying of random dungeons.<br />
+FISHING_NODES displays fishing nodes.<br />
+MOBCAMP_MEDIUM_NODE displays mob camps.
 
 ## Changelog:
 - v0.4      Added fishing zones and mob camps
