@@ -5,6 +5,9 @@ env:
   global:
     - PY37PATH=/c/Python37:/c/Python37/Scripts
 
+before_install:
+  - wget -qO- https://bootstrap.pypa.io/get-pip.py | python
+
 install:
   - python -m pip install --upgrade pip
   - pip install -r requirements.txt
