@@ -39,6 +39,7 @@ For example the ORE_HIGH_NODE pointed will display the T6 ore points on a T5 map
 RANDOM_DUNGEONS filter allows displaying of random dungeons
 
 ## Changelog:
+- v0.3.2    Misc updates
 - v0.3.1    Improved map name recognition
 - v0.3      Improved map name recognition removed dependency from albion.thisgame.ru
 - v0.2      Fixed map name recognition and added random dungeon markers
