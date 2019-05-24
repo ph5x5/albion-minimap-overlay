@@ -23,7 +23,7 @@ pytesseract.pytesseract.tesseract_cmd = configuration['general']['tesseract_path
 MAP_PREVIOUS = ""
 MAP_INFO_PREVIOUS = {}
 RESOLUTION = "", ""
-VERSION = "0.4"
+VERSION = "0.4.1"
 DATABASE_URI = 'https://www.albiononline2d.com/en/map'
 
 logging.basicConfig(level = logging.INFO)
@@ -60,7 +60,7 @@ class GetScreenshot:
     def __init__(self, width, height):
         logging.info("Saving map name screenshot to {}..".format(SCREENSHOT_FILE))
         try:
-            screenshot = ImageGrab.grab(bbox = (width - 255, height - 44, width - 80, height - 20))
+            screenshot = ImageGrab.grab(bbox = (width - 255 * (RESOLUTION[1] / 1080), height - 44 * (RESOLUTION[1] / 1080), width - 80, height - 20))
             screenshot.save(SCREENSHOT_FILE)
         except:
             CriticalError("Can\'t capture screenshot to file {}!".format(SCREENSHOT_FILE))
@@ -75,7 +75,7 @@ class RecognizeMap:
                 temp_text = temp_text.split('<')[0]
             while temp_text.endswith(' ') or temp_text.endswith('-'):
                 temp_text = temp_text[:-1]
-            self.text = temp_text.replace(' ', '-').replace('-a', '').replace('-e', '').replace('->', '').replace('-@', '').replace('-«a', '').replace('-«@', '').replace('>', '').replace('.', '')
+            self.text = temp_text.replace(' ', '-').replace('-a', '').replace('-e', '').replace('->', '').replace('-@', '').replace('-«a', '').replace('-«@', '').replace('>', '').replace('.', '').replace("«", '').replace("{", "l").replace("}", "l")
         except:
             CriticalError('Can\'t recognize the map name. Set the game to windowed FullScreen!')
         
@@ -221,7 +221,7 @@ class InitOverlay():
                     elif resource["nodetype"] == "low":
                         color = "yellow"
                         radius = 1
-            self.create_circle(RESOLUTION[0] - 340 + (resource["x"] + 1000) * 0.175, RESOLUTION[1] - 240 + (-resource["y"] + 1000) * 0.108, radius, color, self.canvas)
+            self.create_circle(RESOLUTION[0] - 340 + (resource["x"] + 1000) * 0.172, RESOLUTION[1] - 250 + (-resource["y"] + 1000) * 0.115, radius, color, self.canvas)
         logging.info("Sleeping for {} seconds..".format(UPDATE_INTERVAL))
         self.canvas.after(5000, self.redraw_canvas)
 
