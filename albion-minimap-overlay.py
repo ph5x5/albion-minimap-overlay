@@ -60,7 +60,8 @@ class GetScreenshot:
     def __init__(self, width, height):
         logging.info("Saving map name screenshot to {}..".format(SCREENSHOT_FILE))
         try:
-            screenshot = ImageGrab.grab(bbox = (width - 255 * (RESOLUTION[1] / 1080), height - 44 * (RESOLUTION[1] / 1080), width - 80, height - 20))
+            k =  RESOLUTION[1] / 1080
+            screenshot = ImageGrab.grab(bbox = (width - 255 * k, height - 44 * k, width - 80 * k, height - 20 * k))
             screenshot.save(SCREENSHOT_FILE)
         except:
             CriticalError("Can\'t capture screenshot to file {}!".format(SCREENSHOT_FILE))
@@ -75,7 +76,7 @@ class RecognizeMap:
                 temp_text = temp_text.split('<')[0]
             while temp_text.endswith(' ') or temp_text.endswith('-'):
                 temp_text = temp_text[:-1]
-            self.text = temp_text.replace(' ', '-').replace('-a', '').replace('-e', '').replace('->', '').replace('-@', '').replace('-«a', '').replace('-«@', '').replace('>', '').replace('.', '').replace("«", '').replace("{", "l").replace("}", "l")
+            self.text = temp_text.replace(' ', '-').replace('-a', '').replace('-e', '').replace('->', '').replace('-@', '').replace('-«a', '').replace('-«@', '').replace('>', '').replace('.', '').replace("«", '').replace("{", "l").replace("}", "l").replace("»", '').replace("-i", "")
         except:
             CriticalError('Can\'t recognize the map name. Set the game to windowed FullScreen!')
         

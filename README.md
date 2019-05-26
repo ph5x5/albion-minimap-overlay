@@ -17,7 +17,7 @@ Doesn't interfers with the game and doesn't violate the user agreement since it 
 
 ## Installation:
 1. Download and unpack the [latest release](https://github.com/ph5x5/albion-minimap-overlay/releases)
-2. Download the latest [Google Tesseract OCR Engine](https://github.com/tesseract-ocr/tesseract/wiki/Downloads)
+2. Download the latest [Google Tesseract OCR Engine](https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v4.1.0.20190314.exe)
 3. Go the executable folder and edit the config.json file updating the Tesseract "tesseract_path" installation location
 4. Fill the filters you want to view in the "filters" section according to [Configuration Nodes] section
 5. Launch the albion-minimap-tool executable
@@ -41,6 +41,7 @@ FISHING_NODES displays fishing nodes.<br />
 MOBCAMP_MEDIUM_NODE displays mob camps.
 
 ## Changelog:
+- v0.4.2    Renamed script/binary to "albion-minimap-overlay", readme fixes, minor recognition fixes, resolution fixes
 - v0.4.1    Improved node coordinates, added scaling for different resolutions, improved map name recognition
 - v0.4      Added fishing zones and mob camps
 - v0.3.2    Misc updates
