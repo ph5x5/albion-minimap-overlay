@@ -41,6 +41,10 @@ RANDOM_DUNGEONS filter allows displaying of random dungeons.<br />
 FISHING_NODES displays fishing nodes.<br />
 MOBCAMP_MEDIUM_NODE displays mob camps.
 
+## Troubleshooting:
+1. The tool launches and exites immideately - Check the tesseract path, it can't find it. Try the p.2 if this didn't help.
+2. The tool can't read the JSON configuration file - Try to validate your config's JSON syntax at [Online JSON Formatter and Validator](https://jsonformatter.curiousconcept.com/)
+
 ## Changelog:
 - v0.4.3    Fixed minimap scaling for different resolutions, minor recognition fix
 - v0.4.2    Renamed script/binary to "albion-minimap-overlay", readme fixes, minor recognition fixes, resolution fixes
