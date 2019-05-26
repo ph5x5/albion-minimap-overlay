@@ -23,7 +23,7 @@ pytesseract.pytesseract.tesseract_cmd = configuration['general']['tesseract_path
 MAP_PREVIOUS = ""
 MAP_INFO_PREVIOUS = {}
 RESOLUTION = "", ""
-VERSION = "0.4.2"
+VERSION = "0.4.3"
 DATABASE_URI = 'https://www.albiononline2d.com/en/map'
 
 logging.basicConfig(level = logging.INFO)
@@ -46,6 +46,7 @@ class GetResolution:
                 resolution_string = str(monitor).split('+')[0].split('(')[1]
                 self.width = resolution_string.split('x')[0]
                 self.height = resolution_string.split('x')[1]
+                self.k = int(self.height) / 1080
                 found = True
         if found == False:
             CriticalError('Can\'t find display resolution!')
@@ -53,15 +54,14 @@ class GetResolution:
     @property
     def resolution(self):
         logging.info("Resolution is {}x{}".format(self.width, self.height))
-        return int(self.width), int(self.height)
+        return int(self.width), int(self.height), float(self.k)
 
 
 class GetScreenshot:
     def __init__(self, width, height):
         logging.info("Saving map name screenshot to {}..".format(SCREENSHOT_FILE))
         try:
-            k = RESOLUTION[1] / 1080
-            screenshot = ImageGrab.grab(bbox = (width - 255 * k, height - 44 * k, width - 80 * k, height - 20 * k))
+            screenshot = ImageGrab.grab(bbox = (width - 255 * RESOLUTION[2], height - 44 * RESOLUTION[2], width - 80 * RESOLUTION[2], height - 20 * RESOLUTION[2]))
             screenshot.save(SCREENSHOT_FILE)
         except:
             CriticalError("Can\'t capture screenshot to file {}!".format(SCREENSHOT_FILE))
@@ -112,6 +112,10 @@ class GetMapId:
                         if name.endswith("a"):
                             logging.info("Trying to remove the recognition artifact \"a\"..")
                             name = name[:-1]
+                            logging.info("New name: {}".format(name))
+                        if 'it' in name:
+                            logging.info("Trying to replace the recognition artifact \"it\" with \"w\"..")
+                            name = name.replace('it', 'w')
                             logging.info("New name: {}".format(name))
             else:
                 self.flag = False
@@ -222,7 +226,7 @@ class InitOverlay():
                     elif resource["nodetype"] == "low":
                         color = "yellow"
                         radius = 1
-            self.create_circle(RESOLUTION[0] - 340 + (resource["x"] + 1000) * 0.172, RESOLUTION[1] - 250 + (-resource["y"] + 1000) * 0.115, radius, color, self.canvas)
+            self.create_circle(RESOLUTION[0] - 340 * RESOLUTION[2] + (resource["x"] + 1000 * RESOLUTION[2]) * 0.172, RESOLUTION[1] - 250 * RESOLUTION[2] + (-resource["y"] + 1000 * RESOLUTION[2]) * 0.115, radius, color, self.canvas)
         logging.info("Sleeping for {} seconds..".format(UPDATE_INTERVAL))
         self.canvas.after(5000, self.redraw_canvas)
 

@@ -42,6 +42,7 @@ FISHING_NODES displays fishing nodes.<br />
 MOBCAMP_MEDIUM_NODE displays mob camps.
 
 ## Changelog:
+- v0.4.3    Fixed minimap scaling for different resolutions, minor recognition fix
 - v0.4.2    Renamed script/binary to "albion-minimap-overlay", readme fixes, minor recognition fixes, resolution fixes
 - v0.4.1    Improved node coordinates, added scaling for different resolutions, improved map name recognition
 - v0.4      Added fishing zones and mob camps
