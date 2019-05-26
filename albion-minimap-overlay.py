@@ -60,7 +60,7 @@ class GetScreenshot:
     def __init__(self, width, height):
         logging.info("Saving map name screenshot to {}..".format(SCREENSHOT_FILE))
         try:
-            k =  RESOLUTION[1] / 1080
+            k = RESOLUTION[1] / 1080
             screenshot = ImageGrab.grab(bbox = (width - 255 * k, height - 44 * k, width - 80 * k, height - 20 * k))
             screenshot.save(SCREENSHOT_FILE)
         except:
