@@ -22,7 +22,8 @@ Doesn't interfers with the game and doesn't violate the user agreement since it 
 4. Fill the filters you want to view in the "filters" section according to [Configuration Nodes] section
 5. Launch the albion-minimap-tool executable
 6. Switch Albion to the windowed full screen mode
-6. Play and enjoy!
+7. Set the ingame interface scaling to 80%
+8. Play and enjoy!
 
 ## Configuration nodes:
 General section:
