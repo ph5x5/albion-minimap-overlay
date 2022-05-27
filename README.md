@@ -41,18 +41,19 @@ Recognition coordinates:
 - coordinates (x0, y0, x1, y1)   - relative coordinates of the recognition rectangle, feel free to play with them if your recognition rectangle has wrong positioning by default
 
 Filters sections:
-Resource filters are pointed as this: {RESOURCE}_{TIER}_NODE, where:
-- <RESOURCE> - is the resource name (FIBER, HIDE, ORE, ROCK, WOOD)
-- <TIER> - is the relative tier level of a resource on the map (HIGH, MEDIUM, LOW)
-For example the ORE_HIGH_NODE pointed will display the T6 ore points on a T5 map.<br />
-RANDOM_DUNGEONS filter allows displaying of random dungeons.<br />
-FISHING_NODES displays fishing nodes.<br />
-MOBCAMP_MEDIUM_NODE displays mob camps.<br />
-ROAMING_MEDIUM_NODE displays roaming mobs.
+Resource filters are pointed as this: {RESOURCE} -> {TIER}, where:
+- {RESOURCE} - is the resource name (FIBER, HIDE, ORE, ROCK, WOOD)
+- {TIER} - is the relative tier level of a resource on the map (HIGH, MEDIUM, LOW)
+For example the high ore selected will display the T6 ore points on a T5 map.<br />
+Random dungeons     - filter allows displaying of random dungeons.<br />
+Fishing             - displays fishing nodes.<br />
+Mob camp            - displays mob camps.<br />
+Roaming mob         - displays roaming mobs.
 
 ## Troubleshooting:
 1. The tool launches and exites immideately - Check the tesseract path, it can't find it. Try the p.2 if this didn't help.
 2. The tool can't read the JSON configuration file - Try to validate your config's JSON syntax at [Online JSON Formatter and Validator](https://jsonformatter.curiousconcept.com/)
+3. Map names aren't recognizing - tune your recognition coordinates
 
 ## Changelog:
 - v0.5.1    Recognition improved much, added system tray icon and configuration menu, caching, code refactoring
@@ -80,4 +81,5 @@ Donate: https://www.patreon.com/ph5x5
 1. [Albion Online Team](https://albiononline.com)
 2. [www.albiononline2d.com](https://www.albiononline2d.com)
 3. [Pelfusion](http://www.pelfusion.com/) for icon
-4. Google
+4. [SkinnyZi](https://github.com/SkinnyZi) for code review and ideas
+5. Google
