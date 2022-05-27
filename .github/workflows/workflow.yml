@@ -4,9 +4,7 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: windows-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python 3.10
@@ -22,7 +20,7 @@ jobs:
         id: get_version
         run: |
           powershell '$env:version = (Get-Content "version.json" | ConvertFrom-Json).version'
-          powershell 'Write-Host("::set-output name=version::${env:version}")'
+          powershell 'Write-Host(\"::set-output name=version::${env:version}\")'
       - name: Create executable
         run: pyinstaller --onefile --icon=misc/map.ico albion-minimap-overlay.py
       - name: Copy results
