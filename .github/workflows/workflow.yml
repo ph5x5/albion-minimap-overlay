@@ -19,8 +19,17 @@ jobs:
       - name: Get version
         id: get_version
         run: |
-          powershell '$version = (Get-Content "version.json" | ConvertFrom-Json).version; Write-Host(\"::set-output name=version::$version\")'
-          powershell '$release = (Get-Content "version.json" | ConvertFrom-Json).release; Write-Host(\"::set-output name=version::$release\")'
+          powershell '
+            $version = (Get-Content "version.json" | ConvertFrom-Json).version;
+            Write-Host(\"::set-output name=version::$version\")
+          '
+      - name: Get release
+        id: get_release
+        run: |
+          powershell '
+            $release = (Get-Content "version.json" | ConvertFrom-Json).release;
+            Write-Host(\"::set-output name=version::$release\")'
+          '
       - name: Create executable
         run: pyinstaller --onefile --icon=misc/map.ico albion-minimap-overlay.py
       - name: Copy results
@@ -42,7 +51,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: "${{ steps.get_version.outputs.version }}"
-          release_name: "${{ steps.get_version.outputs.release }}"
+          release_name: "${{ steps.get_release.outputs.release }}"
           draft: true
           prerelease: false
       - uses: actions/upload-release-asset@v1.0.1
