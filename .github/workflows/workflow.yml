@@ -41,8 +41,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.get_version.outputs.version }}
-          release_name: ${{ steps.get_version.outputs.release }}
+          tag_name: "${{ steps.get_version.outputs.version }}"
+          release_name: "${{ steps.get_version.outputs.release }}"
           draft: true
           prerelease: false
       - uses: actions/upload-release-asset@v1.0.1

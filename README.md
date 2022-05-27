@@ -56,7 +56,7 @@ Roaming mob         - displays roaming mobs.
 3. Map names aren't recognizing - tune your recognition coordinates
 
 ## Changelog:
-- v0.5.1    Recognition improved much, added system tray icon and configuration menu, caching, code refactoring
+- v0.5.1    Recognition improved much, added system tray icon and configuration menu, caching, code refactoring, build pipeline
 - v0.4.3    Fixed minimap scaling for different resolutions, minor recognition fix
 - v0.4.2    Renamed script/binary to "albion-minimap-overlay", readme fixes, minor recognition fixes, resolution fixes
 - v0.4.1    Improved node coordinates, added scaling for different resolutions, improved map name recognition
