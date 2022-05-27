@@ -19,16 +19,15 @@ jobs:
       - name: Get version
         id: get_version
         run: |
-          powershell '$env:version = (Get-Content "version.json" | ConvertFrom-Json).version'
-          powershell 'Write-Host(\"::set-output name=version::${env:version}\")'
+          powershell '$version = (Get-Content "version.json" | ConvertFrom-Json).version; Write-Host(\"::set-output name=version::$version\")'
       - name: Create executable
         run: pyinstaller --onefile --icon=misc/map.ico albion-minimap-overlay.py
       - name: Copy results
         run: |
-          copy config.json dist/config.json
-          copy README.md dist/README.md
-          copy misc dist/misc
-          copy ui dist/misc
+          powershell 'Copy-Item config.json dist/'
+          powershell 'Copy-Item README.md dist/'
+          powershell 'Copy-Item misc dist/misc -recurse -force'
+          powershell 'Copy-Item ui dist/ui -recurse -force'
       - uses: papeloto/action-zip@v1
         name: Archive results
         with:
