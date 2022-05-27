@@ -28,7 +28,7 @@ jobs:
         run: |
           powershell '
             $release = (Get-Content "version.json" | ConvertFrom-Json).release;
-            Write-Host(\"::set-output name=version::$release\")'
+            Write-Host(\"::set-output name=version::$release\")
           '
       - name: Create executable
         run: pyinstaller --onefile --icon=misc/map.ico albion-minimap-overlay.py
