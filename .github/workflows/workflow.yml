@@ -21,17 +21,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pyinstaller
-      - name: Generating version
-        id: generate_version
+      - name: Get version
+        id: get_version
         run: |
-          powershell '$version = (git describe); @{ "version" =  $version } | ConvertTo-Json | Out-File "version.json"; $env:version = $version'
+          powershell '$env:version = (Get-Content "version.json" | ConvertFrom-Json).version'
           echo "::set-output name=version::%version%"
       - name: Create executable
         run: pyinstaller --onefile --icon=misc/map.ico albion-minimap-overlay.py
       - name: Copy results
         run: |
-          mkdir dist
-          copy albion-minimap-overlay.exe dist/albion-minimap-overlay.exe
           copy config.json dist/config.json
           copy README.md dist/README.md
           copy misc dist/misc
@@ -51,14 +49,16 @@ jobs:
           draft: true
           prerelease: false
       - uses: actions/upload-release-asset@v1.0.1
+        name: Upload artifact
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist/albion-minimap-tool-${{ steps.generate_version.outputs.version }}.zip
-          asset_name: albion-minimap-tool-${{ steps.generate_version.outputs.version }}.zip
+          asset_path: ./dist/albion-minimap-tool-${{ steps.get_version.outputs.version }}.zip
+          asset_name: albion-minimap-tool-${{ steps.get_version.outputs.version }}.zip
           asset_content_type: application/zip
       - uses: eregon/publish-release@v1
+        name: Publish artifact
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
