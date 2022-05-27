@@ -1,16 +1,35 @@
 {
-    "general": {
-        "screenshot_file": ".\\screenshot.png",
-        "tesseract_path": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe",
-        "update_interval": 5,
-        "retries": 5
-    },
     "filters": [
-        "ORE_HIGH_NODE",
-        "ORE_MEDIUM_NODE",
-        "ORE_LOW_NODE",
-        "RANDOM_DUNGEONS",
+        "FIBER_HIGH_NODE",
+        "FIBER_LOW_NODE",
+        "FIBER_MEDIUM_NODE",
+        "FISHING_NODE",
         "MOBCAMP_MEDIUM_NODE",
-        "FISHING_NODE"
-    ]
+        "ORE_HIGH_NODE",
+        "ORE_LOW_NODE",
+        "ORE_MEDIUM_NODE",
+        "RANDOM_DUNGEONS",
+        "ROAMING_MEDIUM_NODE",
+        "ROCK_HIGH_NODE",
+        "ROCK_LOW_NODE",
+        "ROCK_MEDIUM_NODE",
+        "WOOD_HIGH_NODE",
+        "WOOD_LOW_NODE",
+        "WOOD_MEDIUM_NODE"
+    ],
+    "general": {
+        "retries": 5,
+        "update_interval": 1
+    },
+    "paths": {
+        "screenshot_file": ".\\screenshot.png",
+        "tesseract_path": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
+    },
+    "recognition": {
+        "draw_text_capture_zone": false,
+        "x0": 255,
+        "x1": 80,
+        "y0": 44,
+        "y1": 20
+    }
 }
