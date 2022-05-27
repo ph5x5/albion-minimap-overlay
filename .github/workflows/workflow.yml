@@ -1,0 +1,75 @@
+name: Albion Minimap Overlay
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.10
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+      - name: Get version
+        id: get_version
+        run: |
+          powershell '
+            $version = (Get-Content "version.json" | ConvertFrom-Json).version;
+            Write-Host(\"::set-output name=version::$version\")
+          '
+      - name: Get release
+        id: get_release
+        run: |
+          powershell '
+            $release = (Get-Content "version.json" | ConvertFrom-Json).release;
+            Write-Host(\"::set-output name=version::$release\")
+          '
+      - name: Create executable
+        run: pyinstaller --onefile --icon=misc/map.ico albion-minimap-overlay.py
+      - name: Copy results
+        run: |
+          powershell 'Copy-Item config.json dist/'
+          powershell 'Copy-Item README.md dist/'
+          powershell 'Copy-Item version.json dist/'
+          powershell 'Copy-Item misc dist/misc -recurse -force'
+          powershell 'Copy-Item ui dist/ui -recurse -force'
+      - uses: papeloto/action-zip@v1
+        name: Archive results
+        with:
+          files: dist/
+          dest: albion-minimap-tool-${{ steps.get_version.outputs.version }}.zip
+      - name: Create Draft Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: "${{ steps.get_version.outputs.version }}"
+          release_name: "${{ steps.get_release.outputs.release }}"
+          draft: true
+          prerelease: false
+      - uses: actions/upload-release-asset@v1.0.1
+        name: Upload artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./albion-minimap-tool-${{ steps.get_version.outputs.version }}.zip
+          asset_name: albion-minimap-tool-${{ steps.get_version.outputs.version }}.zip
+          asset_content_type: application/zip
+      - uses: eregon/publish-release@v1
+        name: Publish release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
+          
