@@ -1,0 +1,66 @@
+name: Albion Minimap Overlay
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+      - name: Generating version
+        id: generate_version
+        run: |
+          powershell '$version = (git describe); @{ "version" =  $version } | ConvertTo-Json | Out-File "version.json"; $env:version = $version'
+          echo "::set-output name=version::%version%"
+      - name: Create executable
+        run: pyinstaller --onefile --icon=misc/map.ico albion-minimap-overlay.py
+      - name: Copy results
+        run: |
+          mkdir dist
+          copy albion-minimap-overlay.exe dist/albion-minimap-overlay.exe
+          copy config.json dist/config.json
+          copy README.md dist/README.md
+          copy misc dist/misc
+          copy ui dist/misc
+      - name: Archive Results
+        run: |
+          cd dist
+          powershell 'zip albion-minimap-tool-${env:version}.zip'
+      - name: Create Draft Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: test
+          release_name: test
+          draft: true
+          prerelease: false
+      - uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/albion-minimap-tool-${{ steps.generate_version.outputs.version }}.zip
+          asset_name: albion-minimap-tool-${{ steps.generate_version.outputs.version }}.zip
+          asset_content_type: application/zip
+      - uses: eregon/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
+          
