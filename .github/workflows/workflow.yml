@@ -26,6 +26,7 @@ jobs:
         run: |
           powershell 'Copy-Item config.json dist/'
           powershell 'Copy-Item README.md dist/'
+          powershell 'Copy-Item version.json dist/'
           powershell 'Copy-Item misc dist/misc -recurse -force'
           powershell 'Copy-Item ui dist/ui -recurse -force'
       - uses: papeloto/action-zip@v1
