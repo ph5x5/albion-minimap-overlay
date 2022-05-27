@@ -34,10 +34,11 @@ jobs:
           copy README.md dist/README.md
           copy misc dist/misc
           copy ui dist/misc
-      - name: Archive Results
-        run: |
-          cd dist
-          powershell 'zip albion-minimap-tool-${env:version}.zip'
+      - uses: papeloto/action-zip@v1
+        name: Archive results
+        with:
+          files: dist/
+          dest: albion-minimap-tool-${{ steps.get_version.outputs.version }}.zip
       - name: Create Draft Release
         id: create_release
         uses: actions/create-release@v1
