@@ -134,7 +134,6 @@ class Configuration():
     def application(self):
         return self.__application
 
-
 class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
     def exit_application(self):
         overlayThread.do_run = False
@@ -220,7 +219,6 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
         self.setContextMenu(menu)
         self.setToolTip(configuration.application['name'])
 
-
 class Printer():
     @property
     def information(self):
@@ -230,7 +228,6 @@ class Printer():
         logging.info("Donate: https://www.patreon.com/ph5x5")
         logging.info(f"Version: {configuration.version}")
         logging.info("----------------------------------------------------")
-
 
 class ImageProcessor():
     def get_map_name_image(self):
@@ -283,7 +280,6 @@ class ImageProcessor():
         except Exception as e:
             logging.warning(f"Can't recognize the map name. Set the game to windowed FullScreen: {e}")
         return recognized_text
-
 
 class MapDataSource():
     def get_map_id_from_cache(self, map_name):
@@ -388,7 +384,6 @@ class MapDataSource():
     def nodes(self):
         return self.__nodes
 
-
 class MapFilter():
     def filter_nodes(self, nodes):
         logging.info("Applying the filters..")
@@ -412,7 +407,6 @@ class MapFilter():
             error = True
             logging.error(f"Can't apply the filters, please check their syntax in {str(configuration.file_paths['user_configuration'])}: {e}")
         return nodes_filtered, error
-
 
 class GameMap():
     __name = None
@@ -466,7 +460,6 @@ class GameMap():
     @property
     def nodes_filtered(self):
         return self.__nodes_filtered
-
 
 class Overlay():
     def create_circle(self, x, y, r, color, canvasName):
@@ -588,6 +581,8 @@ def main():
     tray = SystemTrayIcon(QtGui.QIcon(str(configuration.file_paths['icon'])), tray_widget)
     tray.show()
     sys.exit(application.exec())
+
+
 
 # BODY
 if __name__ == "__main__":
