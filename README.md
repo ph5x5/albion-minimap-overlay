@@ -1,6 +1,6 @@
 # **Albion Minimap Overlay Tool**
 This tool automatically gathers the information about your current map at https://www.albiononline2d.com and displays the pointed nodes over your minimap.<br />
-Doesn't interfers with the game and doesn't violate the user agreement since it only displays the on-screen overlay over the albion window and gets the current map name making screenshots.
+Doesn't interfers with the game, but still **does violate the user agreement**: [See this post](https://forum.albiononline.com/index.php/Thread/124819-Regarding-3rd-Party-Software-and-Network-Traffic-aka-do-not-cheat-Update-16-45-U/)<br />
 Easily configurable and convinient
 
 ## **Download**:
