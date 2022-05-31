@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>root</class>
+ <widget class="QDialog" name="root">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>807</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>807</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>807</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Albion Minimap Overlay - Configuration</string>
+  </property>
+  <property name="whatsThis">
+   <string>{&quot;general&quot;:{&quot;update_interval&quot;:0,&quot;retries&quot;:0},&quot;paths&quot;:{&quot;screenshot_file&quot;:&quot;&quot;,&quot;tesseract_path&quot;:&quot;&quot;},&quot;recognition&quot;:{&quot;draw_text_capture_zone&quot;:false,&quot;x0&quot;:0,&quot;y0&quot;:0,&quot;x1&quot;:0,&quot;y1&quot;:0},&quot;filters&quot;:[]}</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <property name="modal">
+   <bool>false</bool>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>510</y>
+     <width>341</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="filters">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>320</y>
+     <width>751</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="whatsThis">
+    <string/>
+   </property>
+   <property name="title">
+    <string>Filters</string>
+   </property>
+   <widget class="QGroupBox" name="ore">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>120</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="title">
+     <string>Ore</string>
+    </property>
+    <widget class="QCheckBox" name="ORE_HIGH_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>High</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="ORE_MEDIUM_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Medium</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="ORE_LOW_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Low</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="wood">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>20</y>
+      <width>120</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="title">
+     <string>Wood</string>
+    </property>
+    <widget class="QCheckBox" name="WOOD_HIGH_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>High</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="WOOD_MEDIUM_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Medium</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="WOOD_LOW_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Low</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="rock">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>20</y>
+      <width>120</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="title">
+     <string>Rock</string>
+    </property>
+    <widget class="QCheckBox" name="ROCK_MEDIUM_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>High</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="ROCK_LOW_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Medium</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="ROCK_HIGH_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Low</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="fiber">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>20</y>
+      <width>120</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="title">
+     <string>Fiber</string>
+    </property>
+    <widget class="QCheckBox" name="FIBER_HIGH_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>High</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="FIBER_MEDIUM_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Medium</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="FIBER_LOW_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Low</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="other">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>20</y>
+      <width>151</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="title">
+     <string>Other</string>
+    </property>
+    <widget class="QCheckBox" name="RANDOM_DUNGEONS">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Random Dungeons</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="FISHING_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Fishing</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="ROAMING_MEDIUM_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Roaming Mob</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="MOBCAMP_MEDIUM_NODE">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mob Camp</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="paths">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>220</y>
+     <width>441</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="whatsThis">
+    <string/>
+   </property>
+   <property name="title">
+    <string>Paths</string>
+   </property>
+   <widget class="QLineEdit" name="tesseract_path">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>20</y>
+      <width>281</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string>{&quot;type&quot;: &quot;string&quot;}</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="tesseract_label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tesseract Location</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="screenshot_label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Screenshot Location</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="screenshot_file">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>50</y>
+      <width>281</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string>{&quot;type&quot;: &quot;string&quot;}</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="general">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>110</y>
+     <width>441</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="whatsThis">
+    <string/>
+   </property>
+   <property name="title">
+    <string>General</string>
+   </property>
+   <widget class="QSpinBox" name="update_interval">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>20</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="update_interval_label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Update interval</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="retries">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>50</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="retries_label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Retries number</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="recognition">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>110</y>
+     <width>291</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="whatsThis">
+    <string/>
+   </property>
+   <property name="title">
+    <string>Recognition Coordinates</string>
+   </property>
+   <widget class="QCheckBox" name="draw_text_capture_zone">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Draw text capture zone</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="x0_label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>x0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="y0_label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>y0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="x1_label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>x1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="y1_label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>150</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>y1</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="x0">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>60</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string>{&quot;type&quot;: &quot;integer&quot;}</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="y0">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string>{&quot;type&quot;: &quot;integer&quot;}</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="x1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>120</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string>{&quot;type&quot;: &quot;integer&quot;}</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="y1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>150</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string>{&quot;type&quot;: &quot;integer&quot;}</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>10</y>
+     <width>521</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Albion Minimap Overlay</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>50</y>
+     <width>521</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Configuration</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>470</y>
+     <width>271</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Made by ph5x5: &lt;a href=&quot;mailto:phoenixus87@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;phoenixus87@gmail.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.reddit.com/user/ph5x5&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Reddit&lt;/span&gt;&lt;/a&gt;&amp;#160;&amp;#160;&amp;#160;&lt;a href=&quot;https://patreon.com/ph5x5&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Patreon&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="openExternalLinks">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>root</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>root</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
